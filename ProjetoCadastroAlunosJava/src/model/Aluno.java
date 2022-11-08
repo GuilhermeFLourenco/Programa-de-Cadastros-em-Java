@@ -8,7 +8,6 @@ public class Aluno extends Pessoa {
 	
 	public Aluno(String nome, String tefefone, String datanascimento, Double notaFinaldoCurso, String datacadastro, String dataUltimaAlteracao) {
 		super(nome,  tefefone, datanascimento, datacadastro, dataUltimaAlteracao);
-		// TODO Auto-generated constructor stub
 		
 		this.notaFinaldoCurso = notaFinaldoCurso;
 	}

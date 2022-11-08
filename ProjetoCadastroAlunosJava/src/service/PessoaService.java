@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
+import exceptions.PessoaException;
 import model.Pessoa;
 import repository.RepositoryImple;
 
@@ -27,7 +28,7 @@ public class PessoaService {
 		repository.salvar(pessoa4.getId(), pessoa4);
 	}
     
-	 public void cadastrarPessoa() {
+	 public void cadastrarPessoa() throws PessoaException {
 	   sc.nextLine();
 		
 		System.out.println("Digite o Nome");
@@ -67,13 +68,13 @@ public class PessoaService {
 		this.repository.salvar(pessoa.getId(), pessoa);
 	}
 	
-	public Pessoa buscarPorId(Integer id) {
+	public Pessoa buscarPorId(Integer id) throws PessoaException{
 		Pessoa pessoa = this.repository.buscarPorId(id);	
 		
 		return pessoa;
 	}
 	
-	public void excluirPessoa(Integer id) {
+	public void excluirPessoa(Integer id) throws PessoaException{
 		repository.excluir(id);
 	}
 }

@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
+import exceptions.AlunoException;
 import model.Aluno;
 import model.Pessoa;
 import repository.RepositoryImple;
@@ -27,7 +28,7 @@ public class AlunoService {
 		repository.salvar(aluno4.getId(), aluno4);		
 	}
 	
-	public void cadastrarAluno() {
+	public void cadastrarAluno() throws AlunoException{
 		sc.nextLine();
 		
 		System.out.println("Digite o Nome");
@@ -67,7 +68,7 @@ public class AlunoService {
 	}
 	
 	
-	public Aluno buscarPorId(Integer id) {
+	public Aluno buscarPorId(Integer id) throws AlunoException{
 		Aluno aluno = this.repository.buscarPorId(id);
 		
 		return aluno;
@@ -77,7 +78,7 @@ public class AlunoService {
 		this.repository.salvar(aluno.getId(), aluno);
 	}
 	
-	public void excluirAluno(Integer id) {
+	public void excluirAluno(Integer id) throws AlunoException{
 		repository.excluir(id);
 	}
 }

@@ -1,7 +1,10 @@
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import exceptions.AlunoException;
+import exceptions.PessoaException;
 import model.Aluno;
 import model.Pessoa;
 import repository.RepositoryImple;
@@ -11,15 +14,14 @@ import util.Menu;
 
 public class Principal {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
+	public static void main(String[] args) throws InterruptedException {
 	  Scanner sc = new Scanner(System.in);
 	  PessoaService pessoaService = new PessoaService(sc);
 	  AlunoService alunoService = new AlunoService(sc);
 	  boolean continua = true;
 	  
 	  do {
+		  try {
 		  Menu.bemVindo();
 		  Menu.menuEscolhaUmaOpcao();
 		  
@@ -136,6 +138,17 @@ public class Principal {
 			    }
 		  }else if(opcao == 5) {
 			  continua = false;
+		  }
+		  }catch(InputMismatchException e) {
+			  System.out.println("Opção Inválida.");
+			  System.out.println("Tente novamente!");
+		  }catch(AlunoException e) {
+			  System.out.println(e.getMessage());
+		  }catch(PessoaException e) {
+			  System.out.println(e.getMessage());
+		  }finally {
+			  Thread.sleep(2000);
+			  sc.nextLine();
 		  }
 		  
 	  }while(continua);
